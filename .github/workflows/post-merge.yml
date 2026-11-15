@@ -1,0 +1,18 @@
+name: Post Merge
+
+on:
+  push:
+    branches: [main]
+
+# No concurrency: the delayed revert must not lock out the run that verifies the fix.
+jobs:
+  post-merge:
+    permissions:
+      contents: write
+      pull-requests: write
+      checks: read
+      actions: read
+    uses: JacobPEvans/.github/.github/workflows/_post-merge.yml@topic/merge-flow-r2 # fixture: follows the topic branch
+    secrets:
+      GH_APP_PRIVATE_KEY: ${{ secrets.GH_APP_PRIVATE_KEY }}
+      slack_webhook_url: ${{ secrets.SLACK_WEBHOOK_URL }}

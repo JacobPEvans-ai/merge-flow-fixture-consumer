@@ -1,0 +1,5 @@
+---
+collections:
+  - name: https://github.com/JacobPEvans-ai/merge-flow-fixture.git
+    type: git
+    version: "0000000000000000000000000000000000000000" # pin bot replaces this

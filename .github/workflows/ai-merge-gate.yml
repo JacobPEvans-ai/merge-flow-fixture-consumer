@@ -1,0 +1,23 @@
+name: AI Merge Gate
+
+on:
+  pull_request:
+    # closed carries the review of a merged fast-lane pull request.
+    types: [opened, ready_for_review, synchronize, reopened, closed]
+  merge_group:
+
+permissions:
+  checks: read
+  contents: read
+  pull-requests: write
+
+jobs:
+  gate:
+    uses: JacobPEvans/.github-ai/.github/workflows/_ai-merge-gate.yml@topic/merge-flow-r2 # fixture: follows the topic branch
+    secrets:
+      LLM_ROUTER_BASE_URL: ${{ secrets.LLM_ROUTER_BASE_URL }}
+      LLM_ROUTER_API_KEY: ${{ secrets.LLM_ROUTER_API_KEY }}
+      NTFY_BASE_URL: ${{ secrets.NTFY_BASE_URL }}
+      GH_APP_CLAUDE_BOT_PRIVATE_KEY: ${{ secrets.GH_APP_CLAUDE_BOT_PRIVATE_KEY }}
+      GITLEAKS_LICENSE_KEY: ${{ secrets.GITLEAKS_LICENSE_KEY }}
+      GH_APP_PRIVATE_KEY: ${{ secrets.GH_APP_PRIVATE_KEY }}
