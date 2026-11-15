@@ -18,4 +18,4 @@ jobs:
     # No with: the shared defaults are already the markdown-only profile.
     uses: JacobPEvans/.github/.github/workflows/_ci-gate.yml@topic/merge-flow-r2 # fixture: follows the topic branch
     secrets:
-      GH_APP_PRIVATE_KEY: ${{ secrets.GH_APP_PRIVATE_KEY }}
+      AUTOMATION_APP_PRIVATE_KEY: ${{ secrets.GH_ACTION_RELEASE_PLEASE_PRIVATE_KEY }}
